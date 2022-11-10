@@ -27,7 +27,7 @@ func TestValidateString(t *testing.T) {
 			"anto",
 			5,
 			25,
-			fmt.Errorf("must contain characters between %d - %d ", 5, 25),
+			fmt.Errorf("must contain characters between  %d - %d ", 5, 25),
 		},
 	}
 	for _, test := range testcases {
@@ -114,28 +114,22 @@ func TestValidatePassword(t *testing.T) {
 	testcases := []struct {
 		name string
 		str  string
-		min  int
-		max  int
 		err  error
 	}{
 		{
 			"ok",
 			"anthony",
-			3,
-			25,
 			nil,
 		},
 		{
 			"not ok",
 			"anto",
-			5,
-			25,
-			fmt.Errorf("must contain characters between %d - %d ", 5, 25),
+			fmt.Errorf("must contain characters between  %d - %d ", 6, 100),
 		},
 	}
 	for _, test := range testcases {
 		t.Run(test.name, func(t *testing.T) {
-			err := ValidateString(test.str, test.min, test.max)
+			err := ValidatePassword(test.str)
 			require.EqualValues(t, err, test.err)
 		})
 	}

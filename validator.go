@@ -15,7 +15,7 @@ var (
 func ValidateString(str string, min, max int) error {
 	n := len(str)
 	if n < min || n > max {
-		return fmt.Errorf("must contain characters between %d - %d ", min, max)
+		return fmt.Errorf("must contain characters between  %d - %d ", min, max)
 	}
 	return nil
 }
