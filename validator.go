@@ -12,6 +12,16 @@ var (
 	isValidNumber   = regexp.MustCompile(`^[0-9]+$`).MatchString
 )
 
+type validator interface {
+	ValidateString(str string, min, max int) error
+	ValidateUserName(name string) error
+	ValidatePhone(num string) error
+	ValidateName(num string) error
+	ValidatePassword(pass string) error
+	ValidateEmail(email string) error
+	ValidateUserDetails(str string, err error) (violations []error)
+}
+
 func ValidateString(str string, min, max int) error {
 	n := len(str)
 	if n < min || n > max {
