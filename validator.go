@@ -60,3 +60,23 @@ func ValidateEmail(email string) error {
 	}
 	return nil
 }
+
+// implemnations
+func ValidateUserDetails(str string, err error) (violations []error) {
+	if err := ValidateName(str); err != nil {
+		violations = append(violations, err)
+	}
+	if err := ValidateEmail(str); err != nil {
+		violations = append(violations, err)
+	}
+	if err := ValidatePhone(str); err != nil {
+		violations = append(violations, err)
+	}
+	if err := ValidatePassword(str); err != nil {
+		violations = append(violations, err)
+	}
+	if err := ValidateUserName(str); err != nil {
+		violations = append(violations, err)
+	}
+	return violations
+}
